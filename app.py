@@ -3,6 +3,7 @@ import os
 from flask import Flask, render_template, request
 from werkzeug.utils import secure_filename
 from extraction import extract_pdf_text, preprocess_text, extract_sections
+from waitress import serve
 
 app = Flask(__name__)
 
@@ -51,4 +52,4 @@ def upload_file():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    serve(app, host='0.0.0.0', port=8000)
